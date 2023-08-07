@@ -64,3 +64,28 @@ window.addEventListener("load", () => {
     });
 
 });
+
+addTaskBtn.addEventListener("click", () => {
+    //...(existing code)
+
+    if (taskText !== "") {
+        const taskItem = document.createElement("li");
+        taskItem.innerText = taskText;
+
+        // Save task to local storage
+        const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        savedTasks.push({ text: taskText, completed: false });
+        localStorage.setItem("tasks", JSON.stringify(savedTasks));
+
+        // ... (remaining code)
+    }
+});
+
+// Clear all tasks from local storage
+const clearAllBtn = document.getElementById("clearAllBtn");
+clearAllBtn.addEventListener("click", () => {
+    taskList.innerHTML = ""; // Clear task list
+
+    localStorage.removeItem("tasks");
+});
+
