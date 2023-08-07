@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="main.js"></script>
+  <title>JotPad</title>
+  <style>
+    body {
+      font-family: 'Work Sans', sans-serif;
+    }
+
+    #container {
+      width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .task-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .task-item {
+      margin-bottom: 10px;
+    }
+
+    .task-item input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .task-item label {
+      display: inline-block;
+      width: 80%;
+    }
+
+    #add-task input[type="text"] {
+      width: 80%;
+    }
+
+    #add-task button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <h1>JotPad</h1>
+
+    <ul class="task-list">
+      <li class="task-item">
+        <input type="checkbox" id="task1">
+        <label for="task1">Complete project proposal</label>
+      </li>
+      <li class="task-item">
+        <input type="checkbox" id="task2">
+        <label for="task2">Buy groceries</label>
+      </li>
+      <li class="task-item">
+        <input type="checkbox" id="task3">
+        <label for="task3">Call John</label>
+      </li>
+    </ul>
+
+    <div id="add-task">
+      <input type="text" id="newTask" placeholder="Add new task...">
+      <button>Add</button>
+    </div>
+  </div>
+  <script>
+    function addTask() {
+      var newTaskInput = document.getElementById("newTask");
+      var newTask = newTaskInput.value.trim();
+
+      if (newTask !== "") {
+        var taskList = document.querySelector(".task-list");
+
+        var li = document.createElement("li");
+        li.className = "task-item";
+
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+
+        var label = document.createElement("label");
+        label.textContent = newTask;
+
+        li.appendChild(checkbox);
+        li.appendChild(label);
+        taskList.appendChild(li);
+
+        newTaskInput.value = "";
+      }
+    }
+  </script>
+</body>
+
+</html>
